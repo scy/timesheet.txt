@@ -45,7 +45,13 @@ class Interval:
         )
 
     def set_stop(self, time):
-        self.stop = None if time is None else self.parse_time(time)
+        if time is None:
+            self.stop = None
+            return
+        stop = self.parse_time(time)
+        if stop < self.start:
+            raise ValueError("the interval may not end before it started")
+        self.stop = stop
 
     def set_start(self, time):
         self.start = self.parse_time(time)

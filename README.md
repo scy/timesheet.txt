@@ -74,7 +74,6 @@ These are things that I as the author still want to do.
 If you need anything else, feel free to create a GitHub issue for it, but be prepared to implement it yourself. 😉
 
 * [create GitHub issues for all of these items]
-* support entries across dates
 * parse description string into components
 * allow to continue more than just the last entry (e.g. the next-to-last one)
 * CLI tool instead of just a Python module
