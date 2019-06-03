@@ -63,7 +63,7 @@ There are also some anti-goals, i.e. things that the system should _not_ have:
   * comments
   * `TZ` lines
   * date lines
-  * time entries, but without parsing the description string into its components (tags, issue ID, …)
+  * time entries, but extracting only issue ID
   * stop lines
   * continue lines
 * timezone handling
@@ -74,7 +74,7 @@ These are things that I as the author still want to do.
 If you need anything else, feel free to create a GitHub issue for it, but be prepared to implement it yourself. 😉
 
 * [create GitHub issues for all of these items]
-* parse description string into components
+* completely parse description string into components (tags, billable)
 * allow to continue more than just the last entry (e.g. the next-to-last one)
 * CLI tool instead of just a Python module
 * filtering

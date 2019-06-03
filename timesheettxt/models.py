@@ -1,5 +1,6 @@
 import copy
 import datetime
+import description
 
 class Context:
     def __init__(self):
@@ -10,12 +11,19 @@ class ContextError(RuntimeError):
     pass
 
 class Interval:
+    extractors = [
+        description.IssueIDExtractor(),
+    ]
+
     def __init__(self, context, spec, time):
         self.context = context
         self.start = self.parse_time(time)
         self.stop = None
         self.duration = None
         self.spec = spec
+        self.description = spec
+        self.meta = {}
+        self.extract(spec)
 
     def __str__(self):
         dateformat = "{:%Y-%m-%d %H:%M:%S}"
@@ -26,10 +34,26 @@ class Interval:
         else:
             stop = " [ still running ] "
             duration = "--:--"
-        return "%s -- %s (%s)  %s" % (dateformat.format(self.start.astimezone(None)), stop, duration, self.spec)
+        return "%s -- %s (%s)  %s%s" % (
+            dateformat.format(self.start.astimezone(None)),
+            stop,
+            duration,
+            "" if self.meta["issue"] is None else "[%s] " % self.meta["issue"],
+            self.description,
+        )
 
     def copy(self):
         return copy.copy(self)
+
+    def extract(self, description):
+        for extractor in Interval.extractors:
+            ret = extractor.extract(description)
+            if len(ret) == 2: # Tuple of key/value metadata dict and new text.
+                self.meta.update(ret[0])
+                description = ret[1]
+            else:
+                raise NotImplementedError("extractors returning something with length %d not implemented" % len(ret))
+        self.description = description
 
     def parse_time(self, time):
         if self.context.date is None:
