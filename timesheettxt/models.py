@@ -27,6 +27,9 @@ class Interval:
 
     def __str__(self):
         dateformat = "{:%Y-%m-%d %H:%M:%S}"
+        meta = []
+        if self.meta["issue"]:
+            meta.append(self.meta["issue"])
         if self.stop:
             stop = dateformat.format(self.stop.astimezone(None))
             minutes = round(self.duration.total_seconds() / 60)
@@ -38,7 +41,7 @@ class Interval:
             dateformat.format(self.start.astimezone(None)),
             stop,
             duration,
-            "" if self.meta["issue"] is None else "[%s] " % self.meta["issue"],
+            "[%s] " % " ".join(meta) if meta else "",
             self.description,
         )
 
