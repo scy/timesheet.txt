@@ -14,15 +14,19 @@ class Interval:
         self.context = context
         self.start = self.parse_time(time)
         self.stop = None
+        self.duration = None
         self.spec = spec
 
     def __str__(self):
         dateformat = "{:%Y-%m-%d %H:%M:%S}"
         if self.stop:
             stop = dateformat.format(self.stop.astimezone(None))
+            minutes = round(self.duration.total_seconds() / 60)
+            duration = "%2d:%2d" % (minutes // 60, minutes % 60)
         else:
             stop = " [ still running ] "
-        return "%s -- %s  %s" % (dateformat.format(self.start.astimezone(None)), stop, self.spec)
+            duration = "--:--"
+        return "%s -- %s (%s)  %s" % (dateformat.format(self.start.astimezone(None)), stop, duration, self.spec)
 
     def copy(self):
         return copy.copy(self)
@@ -47,11 +51,13 @@ class Interval:
     def set_stop(self, time):
         if time is None:
             self.stop = None
+            self.duration = None
             return
         stop = self.parse_time(time)
         if stop < self.start:
             raise ValueError("the interval may not end before it started")
         self.stop = stop
+        self.duration = self.stop - self.start
 
     def set_start(self, time):
         self.start = self.parse_time(time)
