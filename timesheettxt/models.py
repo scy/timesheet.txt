@@ -13,6 +13,7 @@ class ContextError(RuntimeError):
 class Interval:
     extractors = [
         description.IssueIDExtractor(),
+        description.BillableExtractor(),
     ]
 
     def __init__(self, context, spec, time):
@@ -30,6 +31,8 @@ class Interval:
         meta = []
         if self.meta["issue"]:
             meta.append(self.meta["issue"])
+        if self.meta["billable"] is not None:
+            meta.append("$" if self.meta["billable"] else "!$")
         if self.stop:
             stop = dateformat.format(self.stop.astimezone(None))
             minutes = round(self.duration.total_seconds() / 60)
