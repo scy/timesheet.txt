@@ -70,15 +70,9 @@ There are also some anti-goals, i.e. things that the system should _not_ have:
 
 ## Missing
 
-These are things that I as the author still want to do.
-If you need anything else, feel free to create a GitHub issue for it, but be prepared to implement it yourself. 😉
+There are some things that I as the author yet have to implement.
+They are [tagged as enhancement](https://github.com/scy/timesheet.txt/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement) in this project's GitHub issues.
+I'd be especially happy if you had a look at [items tagged "help wanted"](https://github.com/scy/timesheet.txt/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22).
+Sometimes you don't even have to code for these, as they are just about the file format or gathering use cases.
 
-* [create GitHub issues for all of these items]
-* completely parse description string into components (tags)
-* allow to continue more than just the last entry (e.g. the next-to-last one)
-* CLI tool instead of just a Python module
-* filtering
-* reports
-* export to Jira
-* extensive documentation of the file format
-* best practices?
+If you need anything else, feel free to create a GitHub issue for it, but be prepared to implement it yourself. 😉
