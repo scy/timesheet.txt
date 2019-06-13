@@ -13,7 +13,7 @@ class BillableExtractor:
             }, BillableExtractor.regex.sub(" ", text))
 
 class IssueIDExtractor:
-    regex = re.compile(r"^(#?d+|[A-Z]{2,}-\d+)(:\s+|$)")
+    regex = re.compile(r"^(#?\d+|[A-Z]{2,}-\d+)(:\s+|$)")
 
     def extract(self, text):
         match = IssueIDExtractor.regex.search(text)
