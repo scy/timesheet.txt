@@ -29,6 +29,12 @@ TZ Europe/London # we've crossed the timezone border
 # …
 ```
 
+## Editor Support
+
+* The author of this project also provides the [vim-timesheet](https://github.com/scy/vim-timesheet) plugin for Vim with syntax highlighting and some key mappings.
+
+Let me know if you implement support for other editors.
+
 ## Design Goals
 
 * The user should be able to create new timesheet entries really quickly.
