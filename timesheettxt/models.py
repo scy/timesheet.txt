@@ -36,7 +36,7 @@ class Interval:
         if self.stop:
             stop = dateformat.format(self.stop.astimezone(None))
             minutes = round(self.duration.total_seconds() / 60)
-            duration = "%2d:%2d" % (minutes // 60, minutes % 60)
+            duration = "%2d:%02d" % (minutes // 60, minutes % 60)
         else:
             stop = " [ still running ] "
             duration = "--:--"
