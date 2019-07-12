@@ -2,6 +2,16 @@
 
 This project defines a plain text timesheet file format and provides a Python 3 parser.
 
+## Status
+
+The file format is currently being specified in detail in [GitHub issues](https://github.com/scy/timesheet.txt/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22file+format%22) and [pull request #17](https://github.com/scy/timesheet.txt/pull/17).
+Some details may still change, but not a lot.
+
+The parser and Python implementation in [/timesheettxt](timesheettxt) are in alpha and barely useful with some rough edges.
+That being said, the main author of this project is already using it for his own freelance work invoices.
+
+You can expect a real (although basic) CLI tool (instead of manually launching a Python script) once we get to 0.1; see our [milestones](https://github.com/scy/timesheet.txt/milestones).
+
 ## Example
 
 ```
