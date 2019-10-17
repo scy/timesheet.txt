@@ -3,6 +3,13 @@ from dateutil.tz import gettz
 import models
 import re
 
+try:
+    from backports.datetime_fromisoformat import MonkeyPatch
+    MonkeyPatch.patch_fromisoformat()
+except ImportError:
+    # It's not needed on Python >= 3.7, on everything else we risk to crash.
+    pass
+
 comment = re.compile(r"(^\s*#.*$|\s+#\s.*$)")
 date = re.compile(r"^(\d+-\d{1,2}-\d{1,2}):$")
 entry = re.compile(r"^(\d{4}|\d{6})([.^]|\s+(.+))$")

@@ -12,6 +12,13 @@ That being said, the main author of this project is already using it for his own
 
 You can expect a real (although basic) CLI tool (instead of manually launching a Python script) once we get to 0.1; see our [milestones](https://github.com/scy/timesheet.txt/milestones).
 
+## Requirements
+
+* Python ≥ 3.4 (not tested on < 3.6)
+* Python packages:
+  * `python-dateutil`
+  * `backports-datetime-fromisoformat` if you’re on Python < 3.7
+
 ## Example
 
 ```
